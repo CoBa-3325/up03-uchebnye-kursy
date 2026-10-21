@@ -1,0 +1,126 @@
+﻿<Window x:Class="WpfApp1.StudentWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Ученик" Height="720" Width="1150"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3EFF5">
+    <TabControl Margin="8" Background="#F3EFF5" BorderBrush="#C9BBCF">
+        <TabItem Header="Доступные курсы">
+            <Grid Margin="12" Background="#F3EFF5">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                    <RowDefinition Height="Auto"/>
+                </Grid.RowDefinitions>
+                <TextBlock x:Name="InfoLBL" Foreground="#2B2233" Margin="0,0,0,12"/>
+                <DataGrid x:Name="KursGRD" Grid.Row="1" AutoGenerateColumns="False"
+                          IsReadOnly="True" CanUserAddRows="False"
+                          Background="#FBF9FC" BorderBrush="#C9BBCF"
+                          RowBackground="#FBF9FC" AlternatingRowBackground="#F3EFF5"
+                          SelectionChanged="KursGRD_SelectionChanged">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                        <DataGridTextColumn Header="Курс" Binding="{Binding Nazvanie}" Width="250"/>
+                        <DataGridTextColumn Header="Дисциплина" Binding="{Binding DiscName}" Width="180"/>
+                        <DataGridTextColumn Header="Преподаватель" Binding="{Binding PrepName}" Width="220"/>
+                        <DataGridTextColumn Header="Описание" Binding="{Binding Opisanie}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+                <StackPanel Grid.Row="2" Orientation="Horizontal" Margin="0,15,0,0">
+                    <Button Content="Записаться" Width="120" Height="28"
+                            Background="#7C9070" Foreground="White" BorderBrush="#5B6E52"
+                            Click="ZapisBTN_Click"/>
+                </StackPanel>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Мои курсы">
+            <Grid Margin="12" Background="#F3EFF5">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="1*"/>
+                </Grid.ColumnDefinitions>
+                <Grid Grid.Column="0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="*"/>
+                        <RowDefinition Height="Auto"/>
+                        <RowDefinition Height="Auto"/>
+                    </Grid.RowDefinitions>
+                    <TextBlock Grid.Row="0" Text="Курсы, на которые вы записаны"
+                               Foreground="#2B2233" Margin="0,0,0,12"/>
+                    <DataGrid x:Name="MyKursGRD" Grid.Row="1" AutoGenerateColumns="False"
+                              IsReadOnly="True" CanUserAddRows="False"
+                              Background="#FBF9FC" BorderBrush="#C9BBCF"
+                              RowBackground="#FBF9FC" AlternatingRowBackground="#F3EFF5"
+                              SelectionChanged="MyKursGRD_SelectionChanged">
+                        <DataGrid.Columns>
+                            <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                            <DataGridTextColumn Header="Курс" Binding="{Binding Nazvanie}" Width="250"/>
+                            <DataGridTextColumn Header="Дисциплина" Binding="{Binding DiscName}" Width="180"/>
+                            <DataGridTextColumn Header="Преподаватель" Binding="{Binding PrepName}" Width="*"/>
+                        </DataGrid.Columns>
+                    </DataGrid>
+                    <StackPanel Grid.Row="2" Margin="0,15,0,0">
+                        <TextBlock Text="Задания по выбранному курсу:"
+                                   Foreground="#2B2233" Margin="0,0,0,8"/>
+                        <DataGrid x:Name="ZadGRD" AutoGenerateColumns="False" IsReadOnly="True"
+                                  CanUserAddRows="False" Height="150"
+                                  Background="#FBF9FC" BorderBrush="#C9BBCF"
+                                  RowBackground="#FBF9FC" AlternatingRowBackground="#F3EFF5">
+                            <DataGrid.Columns>
+                                <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                                <DataGridTextColumn Header="Название" Binding="{Binding Nazvanie}" Width="220"/>
+                                <DataGridTextColumn Header="Описание" Binding="{Binding Opisanie}" Width="300"/>
+                                <DataGridTextColumn Header="Срок сдачи" Binding="{Binding SrokSdachi, StringFormat=dd.MM.yyyy}" Width="120"/>
+                                <DataGridTextColumn Header="Макс. балл" Binding="{Binding MaksBall}" Width="*"/>
+                            </DataGrid.Columns>
+                        </DataGrid>
+                    </StackPanel>
+                    <StackPanel Grid.Row="3" Margin="0,15,0,0">
+                        <TextBlock Text="Ответ:" Foreground="#2B2233" Margin="0,0,0,5"/>
+                        <TextBox x:Name="OtvetBOX" Height="70" TextWrapping="Wrap" AcceptsReturn="True"
+                                 Padding="4" Background="#FBF9FC" BorderBrush="#C9BBCF"
+                                 Margin="0,0,0,12"/>
+                        <Button Content="Отправить" Width="120" Height="28"
+                                HorizontalAlignment="Left"
+                                Background="#7C9070" Foreground="White" BorderBrush="#5B6E52"
+                                Click="SendOtvetBTN_Click"/>
+                    </StackPanel>
+                </Grid>
+                <Border Grid.Column="1" Margin="15,0,0,0" Padding="8" Background="#FBF9FC"
+                        BorderBrush="#C9BBCF" BorderThickness="1">
+                    <StackPanel>
+                        <TextBlock Text="Изображение курса" Foreground="#2B2233" Margin="0,0,0,8"/>
+                        <Image x:Name="KursImage" Height="200" Stretch="Uniform"/>
+                    </StackPanel>
+                </Border>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Оценки">
+            <Grid Margin="12" Background="#F3EFF5">
+                <DataGrid x:Name="OcenkiGRD" AutoGenerateColumns="False" IsReadOnly="True"
+                          CanUserAddRows="False"
+                          Background="#FBF9FC" BorderBrush="#C9BBCF"
+                          RowBackground="#FBF9FC" AlternatingRowBackground="#F3EFF5">
+                    <DataGrid.Columns>
+                        <DataGridTextColumn Header="ID" Binding="{Binding Id}" Width="50"/>
+                        <DataGridTextColumn Header="Курс" Binding="{Binding KursName}" Width="250"/>
+                        <DataGridTextColumn Header="Задание" Binding="{Binding ZadName}" Width="250"/>
+                        <DataGridTextColumn Header="Балл" Binding="{Binding Ball}" Width="100"/>
+                        <DataGridTextColumn Header="Статус" Binding="{Binding StatusRu}" Width="*"/>
+                    </DataGrid.Columns>
+                </DataGrid>
+            </Grid>
+        </TabItem>
+
+        <TabItem Header="Выход">
+            <Grid Margin="12" Background="#F3EFF5">
+                <Button Content="Выйти из системы" Width="120" Height="28"
+                        Background="#A56B8F" Foreground="White" BorderBrush="#7E4F6B"
+                        Click="ExitBTN_Click"/>
+            </Grid>
+        </TabItem>
+    </TabControl>
+</Window>

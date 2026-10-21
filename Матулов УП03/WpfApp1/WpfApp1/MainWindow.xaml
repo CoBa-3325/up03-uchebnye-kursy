@@ -1,0 +1,34 @@
+﻿<Window x:Class="WpfApp1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Учебные курсы" Height="440" Width="360"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3EFF5">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Учебные курсы" FontSize="20"
+                       Foreground="#2B2233" HorizontalAlignment="Center" Margin="0,5,0,25"/>
+            <TextBlock Text="Логин" Foreground="#2B2233"/>
+            <TextBox x:Name="txtLogin" Margin="0,5,0,15" Padding="4"
+                     Background="#FBF9FC" BorderBrush="#C9BBCF"/>
+            <TextBlock Text="Пароль" Foreground="#2B2233"/>
+            <PasswordBox x:Name="txtPassword" Margin="0,5,0,25" Padding="4"
+                         Background="#FBF9FC" BorderBrush="#C9BBCF"/>
+            <Button Content="Войти" Width="120" Height="28" HorizontalAlignment="Center"
+                    Background="#7C9070" Foreground="White" BorderBrush="#5B6E52"
+                    Click="btnLogin_Click"/>
+            <Button Content="Регистрация" Width="120" Height="28" HorizontalAlignment="Center"
+                    Margin="0,12,0,0"
+                    Background="#A56B8F" Foreground="White" BorderBrush="#7E4F6B"
+                    Click="btnRegistration_Click"/>
+            <Border Margin="0,25,0,0" Padding="8" Background="#FBF9FC"
+                    BorderBrush="#C9BBCF" BorderThickness="1">
+                <StackPanel>
+                    <TextBlock Text="admin1 / 12345" FontSize="11" Foreground="#2B2233"/>
+                    <TextBlock Text="teacher1 / 12345" FontSize="11" Foreground="#2B2233"/>
+                    <TextBlock Text="student1 / 12345" FontSize="11" Foreground="#2B2233"/>
+                </StackPanel>
+            </Border>
+        </StackPanel>
+    </Grid>
+</Window>

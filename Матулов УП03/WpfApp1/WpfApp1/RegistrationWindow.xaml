@@ -1,0 +1,55 @@
+﻿<Window x:Class="WpfApp1.RegistrationWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="Регистрация" Height="630" Width="390"
+        WindowStartupLocation="CenterScreen"
+        Background="#F3EFF5">
+    <Grid Margin="20">
+        <StackPanel>
+            <TextBlock Text="Регистрация" FontSize="18" Foreground="#2B2233"
+                       HorizontalAlignment="Center" Margin="0,5,0,20"/>
+
+            <TextBlock Text="Логин" Foreground="#2B2233"/>
+            <TextBox x:Name="txtLogin" Margin="0,5,0,12" Padding="4"
+                     Background="#FBF9FC" BorderBrush="#C9BBCF"/>
+
+            <TextBlock Text="Пароль" Foreground="#2B2233"/>
+            <PasswordBox x:Name="txtPassword" Margin="0,5,0,12" Padding="4"
+                         Background="#FBF9FC" BorderBrush="#C9BBCF"/>
+
+            <TextBlock Text="Повторите пароль" Foreground="#2B2233"/>
+            <PasswordBox x:Name="txtPassword2" Margin="0,5,0,12" Padding="4"
+                         Background="#FBF9FC" BorderBrush="#C9BBCF"/>
+
+            <TextBlock Text="ФИО" Foreground="#2B2233"/>
+            <TextBox x:Name="txtFullName" Margin="0,5,0,12" Padding="4"
+                     Background="#FBF9FC" BorderBrush="#C9BBCF"/>
+
+            <TextBlock Text="Телефон" Foreground="#2B2233"/>
+            <TextBox x:Name="txtPhone" Margin="0,5,0,12" Padding="4"
+                     Background="#FBF9FC" BorderBrush="#C9BBCF"/>
+
+            <TextBlock Text="Email" Foreground="#2B2233"/>
+            <TextBox x:Name="txtEmail" Margin="0,5,0,12" Padding="4"
+                     Background="#FBF9FC" BorderBrush="#C9BBCF"/>
+
+            <TextBlock Text="Роль" Foreground="#2B2233"/>
+            <ComboBox x:Name="RolCMB" Margin="0,5,0,15" SelectionChanged="RolCMB_SelectionChanged">
+                <ComboBoxItem Content="Ученик" Tag="student"/>
+                <ComboBoxItem Content="Учитель" Tag="teacher"/>
+            </ComboBox>
+
+            <TextBlock x:Name="lblGroup" Text="Группа" Foreground="#2B2233"/>
+            <ComboBox x:Name="GroupCMB" Margin="0,5,0,20"/>
+
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
+                <Button Content="Зарегистрироваться" Width="120" Height="28"
+                        Background="#7C9070" Foreground="White" BorderBrush="#5B6E52"
+                        Click="btnRegistration_Click"/>
+                <Button Content="Назад" Width="120" Height="28" Margin="8,0,0,0"
+                        Background="#A56B8F" Foreground="White" BorderBrush="#7E4F6B"
+                        Click="btnBack_Click"/>
+            </StackPanel>
+        </StackPanel>
+    </Grid>
+</Window>

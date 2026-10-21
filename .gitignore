@@ -1,0 +1,17 @@
+# Сборочные артефакты
+[Bb]in/
+[Oo]bj/
+.vs/
+*.user
+*.suo
+*.userprefs
+
+# Локальные параметры подключения к базе данных (содержат действующий пароль)
+App.config.local
+App.config.local.bak
+
+# Служебные файлы
+~$*
+Thumbs.db
+desktop.ini
+*.tmp
